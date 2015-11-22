@@ -11,4 +11,4 @@ For now this library is just a simple set of immutable, `Parcelable` collections
 [Solid](https://github.com/konmik/solid) library and had the streaming code removed. I'm sure there are plenty of
 performance improvements that can be had, and an API that could be added to more easily create modified collections.
 
-Pull requests are welcome.
+#### **Pull requests are welcome.**
