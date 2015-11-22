@@ -9,9 +9,6 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
-import rx.Observable;
-import rx.Subscriber;
-
 /**
  * Represents an immutable parcelable map.
  * This is basically a decorator around Hashmap.
@@ -19,7 +16,7 @@ import rx.Subscriber;
  * @param <K> a type of keys.
  * @param <V> a type of values.
  */
-public class ImmutableMap<K, V> implements Map<K, V>, Observable.OnSubscribe<Map.Entry<K,V>>, Parcelable {
+public class ImmutableMap<K, V> implements Map<K, V>, Parcelable {
   private static final ImmutableMap<Object, Object> EMPTY = new ImmutableMap<>(new LinkedHashMap<>());
   private static final ClassLoader CLASS_LOADER = ImmutableMap.class.getClassLoader();
 
@@ -168,12 +165,5 @@ public class ImmutableMap<K, V> implements Map<K, V>, Observable.OnSubscribe<Map
     return "ImmutableMap{" +
         "map=" + map +
         '}';
-  }
-
-  @Override public void call(Subscriber<? super Entry<K, V>> subscriber) {
-    for (Entry<K, V> entry : entrySet()) {
-      subscriber.onNext(entry);
-    }
-    subscriber.onCompleted();
   }
 }
